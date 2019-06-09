@@ -20,7 +20,7 @@ $(call inherit-product, vendor/wingtech/wt88047/wt88047-vendor.mk)
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-mokee
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
@@ -128,10 +128,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.usb.id.ptp_adb=ff18 \
     ro.usb.id.ums=ff20 \
     ro.usb.id.ums_adb=ff28
-
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2017-01-01
 
 # Wifi
 PRODUCT_COPY_FILES += \
