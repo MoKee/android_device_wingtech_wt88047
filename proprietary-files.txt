@@ -247,9 +247,12 @@ vendor/lib/libsystem_health_mon.so|808950a838e8f01f0c6efe1ef25acc4ca3376a45
 vendor/lib/libxml.so|8b9cae9b4d1525e7fea093d6a53f363c842f3076
 
 # Sensors
+lib/hw/sensors.msm8916.so:vendor/lib/sensors.wt88047.so
 vendor/lib/libcalmodule_akm.so
-vendor/lib/libcalmodule_yamaha.so
+vendor/lib/libcalmodule_common.so
 vendor/lib/libcalmodule_gyroscope.so
+vendor/lib/libcalmodule_yamaha.so
+vendor/lib/libcalmodule_senodia.so
 
 # Signed Venus (media) firmware
 etc/firmware/venus.b00:vendor/firmware/venus.b00
