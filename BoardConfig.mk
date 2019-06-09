@@ -59,7 +59,7 @@ BOARD_DTBTOOL_ARGS := -2
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_KERNEL_SOURCE := kernel/wingtech/msm8916
-TARGET_KERNEL_CONFIG := lineageos_wt88047_defconfig
+TARGET_KERNEL_CONFIG := mokee_wt88047_defconfig
 BOARD_KERNEL_CMDLINE += phy-msm-usb.floated_charger_enable=1
 
 # Power
@@ -71,6 +71,9 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 BOARD_NO_SECURE_DISCARD := true
+
+# Security patch level
+VENDOR_SECURITY_PATCH := 2017-01-01
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
