@@ -82,9 +82,11 @@ vendor/lib/libactuator_rohm_bu64243gwz_h2x.so
 # Camera chromatix
 vendor/lib/libchromatix_ov2680_common.so
 vendor/lib/libchromatix_ov2680_default_video.so
+vendor/lib/libchromatix_ov2680_preview.so
 vendor/lib/libchromatix_ov2680_snapshot.so
 vendor/lib/libchromatix_ov2680_5987fhq_common.so
 vendor/lib/libchromatix_ov2680_5987fhq_default_video.so
+vendor/lib/libchromatix_ov2680_5987fhq_preview.so
 vendor/lib/libchromatix_ov2680_5987fhq_snapshot.so
 vendor/lib/libchromatix_ov8865_q8v18a_common.so
 vendor/lib/libchromatix_ov8865_q8v18a_default_video.so
@@ -94,6 +96,8 @@ vendor/lib/libchromatix_ov8865_q8v18a_hfr_90fps.so
 vendor/lib/libchromatix_ov8865_q8v18a_liveshot.so
 vendor/lib/libchromatix_ov8865_q8v18a_preview.so
 vendor/lib/libchromatix_ov8865_q8v18a_snapshot.so
+vendor/lib/libchromatix_ov8865_q8v18a_video_hd.so
+vendor/lib/libchromatix_ov8865_q8v18a_zsl.so
 vendor/lib/libchromatix_ov8865_qtech_common.so
 vendor/lib/libchromatix_ov8865_qtech_default_video.so
 vendor/lib/libchromatix_ov8865_qtech_hfr_120fps.so
@@ -102,6 +106,8 @@ vendor/lib/libchromatix_ov8865_qtech_hfr_90fps.so
 vendor/lib/libchromatix_ov8865_qtech_liveshot.so
 vendor/lib/libchromatix_ov8865_qtech_preview.so
 vendor/lib/libchromatix_ov8865_qtech_snapshot.so
+vendor/lib/libchromatix_ov8865_qtech_video_hd.so
+vendor/lib/libchromatix_ov8865_qtech_zsl.so
 vendor/lib/libchromatix_ov8865_sunny_common.so
 vendor/lib/libchromatix_ov8865_sunny_default_video.so
 vendor/lib/libchromatix_ov8865_sunny_hfr_120fps.so
@@ -110,6 +116,8 @@ vendor/lib/libchromatix_ov8865_sunny_hfr_90fps.so
 vendor/lib/libchromatix_ov8865_sunny_liveshot.so
 vendor/lib/libchromatix_ov8865_sunny_preview.so
 vendor/lib/libchromatix_ov8865_sunny_snapshot.so
+vendor/lib/libchromatix_ov8865_sunny_video_hd.so
+vendor/lib/libchromatix_ov8865_sunny_zsl.so
 
 # Camera eeprom
 vendor/lib/libmmcamera_sunny_q8v18a_eeprom.so
