@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/mk_wt88047.mk
+    $(LOCAL_DIR)/mokee_wt88047.mk
