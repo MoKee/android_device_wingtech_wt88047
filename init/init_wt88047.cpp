@@ -1,8 +1,5 @@
 /*
-   Copyright (c) 2016, The Linux Foundation. All rights reserved.
-   Copyright (C) 2016, The CyanogenMod Project
-   Copyright (C) 2015-2016, Ketut P. Kumajaya
-   Copyright (C) 2017-2018, The LineageOS Project
+   Copyright (c) 2016, The CyanogenMod Project
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -31,19 +28,29 @@
  */
 
 #include <cstdlib>
+#include <fcntl.h>
 #include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 #include <sys/sysinfo.h>
 
+#include <android-base/file.h>
+#include <android-base/logging.h>
 #include <android-base/properties.h>
+#include <android-base/strings.h>
 
-#include "vendor_init.h"
 #include "property_service.h"
+#include "vendor_init.h"
 
-#include "init_msm8916.h"
-
+using android::base::GetProperty;
+using android::base::ReadFileToString;
+using android::base::Trim;
 using android::init::property_set;
 
 void property_override(char const prop[], char const value[])
@@ -153,4 +160,41 @@ void init_target_properties()
     property_set("dalvik.vm.heaptargetutilization", "0.75");
     property_set("dalvik.vm.heapminfree", "512k");
     property_set("dalvik.vm.heapmaxfree", "8m");
+}
+
+static void init_alarm_boot_properties()
+{
+    char const *boot_reason_file = "/proc/sys/kernel/boot_reason";
+    std::string boot_reason;
+    std::string tmp = GetProperty("ro.boot.alarmboot","");
+
+    if (ReadFileToString(boot_reason_file, &boot_reason)) {
+        /*
+         * Setup ro.alarm_boot value to true when it is RTC triggered boot up
+         * For existing PMIC chips, the following mapping applies
+         * for the value of boot_reason:
+         *
+         * 0 -> unknown
+         * 1 -> hard reset
+         * 2 -> sudden momentary power loss (SMPL)
+         * 3 -> real time clock (RTC)
+         * 4 -> DC charger inserted
+         * 5 -> USB charger insertd
+         * 6 -> PON1 pin toggled (for secondary PMICs)
+         * 7 -> CBLPWR_N pin toggled (for external power supply)
+         * 8 -> KPDPWR_N pin toggled (power key pressed)
+         */
+        if (Trim(boot_reason) == "3" || tmp == "true")
+            property_set("ro.alarm_boot", "true");
+        else
+            property_set("ro.alarm_boot", "false");
+    }
+}
+
+void vendor_load_properties()
+{
+    // Init a dummy BT MAC address, will be overwritten later
+    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
+    init_target_properties();
+    init_alarm_boot_properties();
 }
