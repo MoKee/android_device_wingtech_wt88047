@@ -64,6 +64,13 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+void property_override_dual(char const system_prop[],
+        char const vendor_prop[], char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
+
 int is2GB()
 {
     struct sysinfo sys;
@@ -160,6 +167,10 @@ void init_target_properties()
     property_set("dalvik.vm.heaptargetutilization", "0.75");
     property_set("dalvik.vm.heapminfree", "512k");
     property_set("dalvik.vm.heapmaxfree", "8m");
+
+    property_override_dual("ro.product.device", "ro.vendor.product.device", "wt88047");
+    property_override_dual("ro.product.name", "ro.vendor.product.name", "wt88047");
+    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Xiaomi/wt88047/wt88047:5.1.1/LMY47V/V9.2.5.0.LHJMIEK:user/release-keys");
 }
 
 static void init_alarm_boot_properties()
